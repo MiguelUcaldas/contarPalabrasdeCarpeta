@@ -7,26 +7,45 @@ from carpeta import carpeta
 import os
 
 #solicita palabra a buscar
-palabra = input("Ingrese la palabra a buscar: ")
+#palabra = input("Ingrese la palabra a buscar: ")
 #Recibe ruta
-ruta = input("Ingrese la ruta de la carpeta donde buscara: ")
+#ruta = input("Ingrese la ruta de la carpeta donde buscara: ")
 
-#Crea objeto carpeta
-folder =  carpeta(ruta, palabra)
-#Busca archivos en la carpeta
-folder.buscarArchivos()
-#Crea archivos
-folder.crearArchivos()
-#Cuenta las palabras
-conteo = folder.contarTotal()
-noLeibles = folder.getArchivosNoTexto()
-leibles = 0+folder.getArchivosTexto()
+palabra = "hola"
+ruta = "C:\pruebas\pruebas2"
 
-print("Archivos no leibles: " + str(noLeibles))
-
-if noLeibles > 0 and leibles == 0:
-    print("La carpeta no contiene archivos de texto")
+#Crea objeto carpeta si encuentra la ruta si no muestra mensaje
+if os.path.exists(ruta):
+    folder =  carpeta(ruta, palabra)
+    print("CARPETA "+ ruta +" ENCONTRADA")
+    #Busca archivos en la carpeta
+    folder.buscarArchivos()
 else:
-    print("La palabra " + palabra + " se repite " + str(conteo) + " veces en la carpeta " + ruta)
+    print("CARPETA NO ENCONTRADA")
+    exit()
+
+#si encontro archivos crea objetos archivo y los guarda en la lista de archivos de la carpeta
+if len(folder.getLstrutas()) > 0:
+    folder.crearArchivos()
+
+#Cuenta archivos leibles y no leibles
+noLeibles = folder.archivosnoLeibles()
+leibles = folder.getArchivosTexto()
+conteo = 0
+
+
+
+# si hay archivos leibles cuenta las palabras
+if leibles > 0:
+    conteo = folder.contarTotal()
+
+#si la carpeta no tiene archivos de texto leibles muestra mensaje
+if noLeibles > 0 and leibles == 0:
+    print("LA CARPETA NO CONTIENE ARCHIVOS DE TEXTO QUE PUEDAN CONTENER LA PALABRA "+palabra)
+#si la carpeta no tiene archivos de texto leibles o no leibles muestra mensaje
+elif noLeibles == 0 and leibles == 0:
+    print("LA CARPETA NO CONTIENE ARCHIVOS")
+else:
+    print("LA PALABRA " + palabra + " SE REPITE " + str(conteo) + " VECES EN LA CARPETA " + ruta)
     
     

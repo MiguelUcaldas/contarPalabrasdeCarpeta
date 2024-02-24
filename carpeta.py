@@ -28,6 +28,7 @@ class carpeta:
         for rutaArchivo in self.lstrutas:
             if rutaArchivo.endswith(".txt") == False:
                 self.archivosNoTexto += 1
+        return self.archivosNoTexto
       
   
 
@@ -38,7 +39,8 @@ class carpeta:
         print("CREANDO ARCHIVOS")
         for rutaArchivo in self.lstrutas:
             self.lstArchivos.append(archivo(rutaArchivo, self.ruta))
-            self.archivosTexto += 1
+            if rutaArchivo.endswith(".txt") == True:
+                self.archivosTexto += 1
         
     
     #metodo que recorre la lista de lstArchivos de la carpeta y cuenta las palabras que se repiten y retorna el total
