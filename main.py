@@ -6,13 +6,16 @@
 from carpeta import carpeta
 import os
 
-#solicita palabra a buscar
-#palabra = input("Ingrese la palabra a buscar: ")
-#Recibe ruta
-#ruta = input("Ingrese la ruta de la carpeta donde buscara: ")
+#venta de bienvenida para usuario
+print("BIENVENIDO AL BUSCADOR DE PALABRAS EN CARPETAS")
+print(" ")
 
-palabra = "hola"
-ruta = "C:\pruebas\pruebas2"
+#solicita palabra a buscar
+palabra = input("Ingrese la palabra a buscar: ")
+#Recibe ruta
+ruta = input("Ingrese la ruta de la carpeta donde buscara: ")
+
+
 
 #Crea objeto carpeta si encuentra la ruta si no muestra mensaje
 if os.path.exists(ruta):
@@ -39,6 +42,12 @@ conteo = 0
 if leibles > 0:
     conteo = folder.contarTotal()
 
+print("  / \\")
+print(" (   @\\___")
+print("  /         O")
+print(" /   (_____/")
+print("/_____/ U")
+
 #si la carpeta no tiene archivos de texto leibles muestra mensaje
 if noLeibles > 0 and leibles == 0:
     print("LA CARPETA NO CONTIENE ARCHIVOS DE TEXTO QUE PUEDAN CONTENER LA PALABRA "+palabra)
@@ -47,5 +56,13 @@ elif noLeibles == 0 and leibles == 0:
     print("LA CARPETA NO CONTIENE ARCHIVOS")
 else:
     print("LA PALABRA " + palabra + " SE REPITE " + str(conteo) + " VECES EN LA CARPETA " + ruta)
+    #imagen de la carpeta
+
+
+
+
+ 
+
+    
     
     
