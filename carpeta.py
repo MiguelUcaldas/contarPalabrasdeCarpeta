@@ -7,8 +7,8 @@ class carpeta:
     def __init__(self, ruta, palabra):
         self.ruta = ruta
         self.lstrutas = []
-        self.palabra = palabra
         self.lstArchivos = []
+        self.palabra = palabra
         self.palabraTotal = 0
         self.archivosNoTexto = 0
         self.archivosTexto = 0
@@ -22,16 +22,8 @@ class carpeta:
                 print("ARCHIVO "+os.path.join(root, file)+ " CARGADO")
                 self.lstrutas.append(os.path.join(root, file))
       
-    
-    #Metodo que revisa si la carpeta tiene archivos que no sean de texto y cuentos archivos no texto hay
-    def archivosnoLeibles(self):
-        for rutaArchivo in self.lstrutas:
-            if rutaArchivo.endswith(".txt") == False:
-                self.archivosNoTexto += 1
-        return self.archivosNoTexto
-      
-  
 
+      
     
     #metodo que crea un objeto de tipo archivo por cada ruta en la lista de rutas de la carpeta
     #y guarda el objeto en la lista de archivos de la carpeta y suma 1 a la variable archivosTexto
@@ -41,6 +33,13 @@ class carpeta:
             self.lstArchivos.append(archivo(rutaArchivo, self.ruta))
             if rutaArchivo.endswith(".txt") == True:
                 self.archivosTexto += 1
+
+    #Metodo que revisa si la carpeta tiene archivos que no sean de texto y cuentos archivos no texto hay
+    def archivosnoLeibles(self):
+        for rutaArchivo in self.lstrutas:
+            if rutaArchivo.endswith(".txt") == False:
+                self.archivosNoTexto += 1
+        return self.archivosNoTexto
         
     
     #metodo que recorre la lista de lstArchivos de la carpeta y cuenta las palabras que se repiten y retorna el total
@@ -49,9 +48,6 @@ class carpeta:
             self.palabraTotal += contenido.contarPalabras(self.palabra)
         return self.palabraTotal
        
-    
- 
-
 
     #setters y getters
     def getRuta(self):
